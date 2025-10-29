@@ -114,4 +114,7 @@ input, select {
 
 .admin-dashboard h2 {
   margin-bottom: 10px;
+.read-the-docs {
+  color: #888;
+}
 }

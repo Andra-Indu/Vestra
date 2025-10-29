@@ -8,6 +8,7 @@ public class VestraBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VestraBackendApplication.class, args);
+		System.out.println("done");
 	}
 
 }
