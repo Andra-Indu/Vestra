@@ -12,7 +12,7 @@ export default function Wishlist() {
     try {
       const res = await API.get("/wishlist");
       setItems(res.data || []);
-    } catch {
+    } catch (err) {
       setItems([]);
     } finally {
       setLoading(false);

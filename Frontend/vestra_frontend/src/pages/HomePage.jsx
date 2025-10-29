@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-// import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/ProductCard";
 import { useNavigate } from "react-router-dom";
 import API from "../api";
 import heroImage from "../assets/hero-placeholder.jpg"; // ✅ make sure image exists
