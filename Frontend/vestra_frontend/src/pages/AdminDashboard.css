@@ -1,0 +1,51 @@
+.admin-dashboard {
+  background: #f8f9fa;
+  min-height: 100vh;
+  border-radius: 10px;
+}
+
+.dashboard-title {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #222;
+  text-transform: uppercase;
+}
+
+.dashboard-card {
+  background: white;
+  border-radius: 15px;
+  text-align: center;
+  padding: 2rem 1rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-6px);
+  border-color: #0d6efd;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-card .card-title {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-card .card-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+.quick-links h4 {
+  font-weight: 600;
+  color: #333;
+}
+
+.btn-outline-dark:hover {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: white !important;
+}
