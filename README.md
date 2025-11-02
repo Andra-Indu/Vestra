@@ -196,59 +196,120 @@ After successful payment, configure the frontend to automatically redirect the u
 
 where they can view their order confirmation and details.
 
-🧭 Project Structure
+### 🧭 Project Structure
 ```
-Vestra_Ecommerce/
+vestra-ecommerce/
 │
-├── backend/
-│   ├── src/main/java/com/excelR/vestra_backend/
-│   │   ├── controller/
-│   │   │   ├── AuthController.java
-│   │   │   ├── ProductController.java
-│   │   │   ├── OrderController.java
-│   │   │   └── PaymentController.java
-|   |   |   |__
-│   │   ├── model/
-│   │   │   ├── User.java
-│   │   │   ├── Product.java
-│   │   │   ├── Order.java
-│   │   │   └── Role.java
-|   |   |   |
-│   │   ├── repository/
-│   │   │   ├── UserRepository.java
-│   │   │   ├── ProductRepository.java
-│   │   │   └── OrderRepository.java
-│   │   ├── service/
-│   │   │   ├── UserService.java
-│   │   │   ├── ProductService.java
-│   │   │   └── OrderService.java
-│   │   └── security/
-│   │       ├── JwtUtils.java
-│   │       ├── JwtAuthFilter.java
-│   │       ├── SecurityConfig.java
-│   │       └── CustomUserDetailsService.java
-│   └── pom.xml
+├── backend/                                  # 🧠 Spring Boot backend
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/excelR/vestra_backend/
+│   │   │   │   ├── config/                  # 🔧 Security & CORS configs
+│   │   │   │   │   ├── SecurityConfig.java
+│   │   │   │   │   ├── JwtAuthFilter.java
+│   │   │   │   │   └── JwtUtils.java
+│   │   │   │   │
+│   │   │   │   ├── controller/              # 🎮 REST Controllers
+│   │   │   │   │   ├── AuthController.java
+│   │   │   │   │   ├── ProductController.java
+│   │   │   │   │   ├── CartController.java
+│   │   │   │   │   ├── OrderController.java
+│   │   │   │   │   └── PaymentController.java
+│   │   │   │   │
+│   │   │   │   ├── model/                   # 📦 JPA Entities
+│   │   │   │   │   ├── User.java
+│   │   │   │   │   ├── Product.java
+│   │   │   │   │   ├── CartItem.java
+│   │   │   │   │   ├── Order.java
+│   │   │   │   │   └── Payment.java
+│   │   │   │   │
+│   │   │   │   ├── repository/              # 🧭 JPA Repositories
+│   │   │   │   │   ├── UserRepository.java
+│   │   │   │   │   ├── ProductRepository.java
+│   │   │   │   │   ├── CartRepository.java
+│   │   │   │   │   └── OrderRepository.java
+│   │   │   │   │
+│   │   │   │   ├── service/                 # ⚙️ Business logic
+│   │   │   │   │   ├── UserService.java
+│   │   │   │   │   ├── ProductService.java
+│   │   │   │   │   ├── CartService.java
+│   │   │   │   │   ├── OrderService.java
+│   │   │   │   │   └── PaymentService.java
+│   │   │   │   │
+│   │   │   │   ├── dto/                     # 🧾 Data Transfer Objects
+│   │   │   │   │   ├── LoginRequest.java
+│   │   │   │   │   ├── RegisterRequest.java
+│   │   │   │   │   └── PaymentResponse.java
+│   │   │   │   │
+│   │   │   │   ├── exception/               # ⚠️ Custom Exceptions
+│   │   │   │   │   ├── ResourceNotFoundException.java
+│   │   │   │   │   └── GlobalExceptionHandler.java
+│   │   │   │   │
+│   │   │   │   └── VestraBackendApplication.java
+│   │   │   │
+│   │   │   └── resources/
+│   │   │       ├── application.properties   # 🔑 DB & Razorpay config
+│   │   │       ├── static/                  # Optional: static assets
+│   │   │       └── templates/               # Optional (for emails, etc.)
+│   │   │
+│   │   └── test/java/...                    # 🧪 Unit Tests
+│   │
+│   ├── pom.xml                              # 📄 Maven dependencies
+│   └── README.md
 │
-└── frontend/
-    ├── src/
-    │   ├── pages/
-    │   │   ├── Home.jsx
-    │   │   ├── ProductDetails.jsx
-    │   │   ├── Cart.jsx
-    │   │   ├── Orders.jsx
-    │   │   ├── Login.jsx
-    │   │   └── AdminDashboard.jsx
-    │   ├── components/
-    │   │   ├── Navbar.jsx
-    │   │   ├── ProductCard.jsx
-    │   │   ├── Footer.jsx
-    │   │   └── ProtectedRoute.jsx
-    │   ├── api/
-    │   │   └── axiosConfig.js
-    │   ├── App.jsx
-    │   └── main.jsx
-    ├── package.json
-    └── vite.config.js
+│
+├── frontend/                                # 🎨 React Frontend
+│   ├── public/
+│   │   ├── index.html
+│   │   ├── favicon.ico
+│   │   └── manifest.json
+│   │
+│   ├── src/
+│   │   ├── api/                             # 🌐 Axios API calls
+│   │   │   ├── authApi.js
+│   │   │   ├── productApi.js
+│   │   │   ├── cartApi.js
+│   │   │   ├── orderApi.js
+│   │   │   └── paymentApi.js
+│   │   │
+│   │   ├── components/                      # 🧩 Reusable UI components
+│   │   │   ├── Navbar.js
+│   │   │   ├── Footer.js
+│   │   │   ├── ProductCard.js
+│   │   │   └── CartItem.js
+│   │   │
+│   │   ├── pages/                           # 📄 Main pages
+│   │   │   ├── Home.js
+│   │   │   ├── Login.js
+│   │   │   ├── Register.js
+│   │   │   ├── ProductList.js
+│   │   │   ├── Cart.js
+│   │   │   ├── Checkout.js
+│   │   │   ├── Orders.js
+│   │   │   ├── UserDashboard.js
+│   │   │   └── AdminDashboard.js
+│   │   │
+│   │   ├── context/                         # 🧠 Global state (optional)
+│   │   │   ├── AuthContext.js
+│   │   │   └── CartContext.js
+│   │   │
+│   │   ├── utils/                           # 🔧 Helper functions
+│   │   │   └── razorpay.js
+│   │   │
+│   │   ├── App.js
+│   │   ├── index.js
+│   │   └── App.css
+│   │
+│   ├── package.json                         # 📦 React dependencies
+│   ├── vite.config.js / webpack.config.js    # ⚙️ Frontend build config
+│   └── README.md
+│
+│
+├── .gitignore
+├── README.md
+└── docs/                                    # 📚 Optional project docs
+    └── architecture-diagram.png
+
 ```
 
 ### 👨‍💻 Roles & Dashboards
